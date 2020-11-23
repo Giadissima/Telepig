@@ -1,0 +1,35 @@
+{
+    "update_id": 847452509, 
+    "message": {
+        "message_id": 126, 
+        "date": 1606127941, 
+        "chat": 
+        {
+            "id": -1001455074078, 
+            "type": "supergroup", 
+            "title": "Hosting POGO Raid"
+        }, 
+        "text": "/help", 
+        "entities": 
+        [{
+            "type": "bot_command", 
+            "offset": 0, "length": 5}], 
+            "caption_entities": [], 
+            "photo": [], 
+            "new_chat_members": [], 
+            "new_chat_photo": [], 
+            "delete_chat_photo": "False", 
+            "group_chat_created": "False", 
+            "supergroup_chat_created": "False", 
+            "channel_chat_created": "False", 
+            "from": 
+            {
+                "id": 367369885, 
+                "first_name": "zShockino", 
+                "is_bot": "False", 
+                "username": "zshockino", 
+                "language_code": "it"
+            }
+    }
+    
+}
