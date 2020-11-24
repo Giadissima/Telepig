@@ -24,8 +24,8 @@ def help(update, context):
     message_received(update)
     sending_message(update)
     text = """Comandi: 
-/registrati - Usa questo comando per registrarti.
-/mostra - Mostra le tue informazioni salvate.
+/registrami - Usa questo comando per registrarti.
+/mostrami - Mostra le tue informazioni salvate.
 /aggiorna - Usa questo comando per aggiornare il tuo profilo."""
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
@@ -33,6 +33,25 @@ def help(update, context):
 def register(update, context):
     message_received(update)
     sending_message(update)
+    if not is_registered(update):
+        text = """Sembra che tu sia già registrato... 💩 se vuoi vedere le tue informazioni, digita /mostrami"""
+    else:
+        text = """Sembra che tu non sia già registrato... 💩
+registrati usando i sottocomandi:
+/nickname
+/livello
+/codice"""
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+
+def is_registered(update):
+    return True
+
+def show(update, context):
+    if is_registered(update):
+        text = """Cooming Sooooooooon 🤡🕰"""
+        context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+    else:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Digita /registrami per registrarti")
 
 # print on terminal the user info
 def message_received(update):

@@ -19,27 +19,30 @@ def main():
         level = logging.INFO)
 
     '''  ADDING COMMANDS HANDLER  '''
-    # /start
-    start_handler = CommandHandler('start', start)
-    '''   private's commands   '''
-    # /aiuto or /help
-    help_handler = CommandHandler(['help','aiuto'], help, filters=(Private))
-    dev_handler = CommandHandler(['test','dev'], devTestingFunction)
-    # all commands not recognized in dm
-    unknown_handler = MessageHandler(Filters.command & Private, unknown)
-    # all text without commands
-    non_command_handler = MessageHandler(Filters.text & ~Filters.command, non_command) 
-    # adding multiple dispatcher
-    dispatcher.add_handler(CallbackQueryHandler(button_pressed))
+    start_handler = CommandHandler('start', start) # /start
+    '''   private commands   '''
+    show_handler = CommandHandler('mostrami', show, filters=(Private)) # /show
+    help_handler = CommandHandler(['help','aiuto'], help, filters=(Private)) # /aiuto or /help
+    register_handler = CommandHandler('registrami', register, filters=(Private)) # /registrami
+    unknown_handler = MessageHandler(Filters.command & Private, unknown) # all commands not recognized in dm
+    non_command_handler = MessageHandler(Filters.text & ~Filters.command & Private, non_command)  # all text without commands
+    '''   public commands   '''
+    raid_handler = CommandHandler('raid', raid, filters=(Public)) # /raid
+    
+    '''  ADDING MULTIPLE DISPATCHER  '''
+    '''   general commands   '''
+    dispatcher.add_handler(CallbackQueryHandler(button_handler))
+    dispatcher.add_error_handler(error_callback) # add error handler
+    '''   private commands   '''
     dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(show_handler)
     dispatcher.add_handler(help_handler)
-    dispatcher.add_handler(dev_handler)
-
+    dispatcher.add_handler(register_handler)
     dispatcher.add_handler(non_command_handler)
     dispatcher.add_handler(unknown_handler)
+    '''   public commands   '''
+    dispatcher.add_handler(raid_handler)
 
-    # add error handler
-    dispatcher.add_error_handler(error_callback) 
     # starting to listen
     updater.start_polling()
     updater.idle()

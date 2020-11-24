@@ -1,26 +1,20 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-def devTestingFunction(update, context):
-    buttons_list = [
-        InlineKeyboardButton('Button1', callback_data='Button1'),
-        InlineKeyboardButton('Button2', callback_data='Button2'),
-        InlineKeyboardButton('Button3', callback_data='Button3'),
-        InlineKeyboardButton('Button4', callback_data='Button4')
-    ]
-    reply = InlineKeyboardMarkup(build_menu(buttons_list, n_cols=2))
-    context.bot.send_message(chat_id = update.effective_chat.id, text="Sono con una puzzetta a programmare", reply_markup=reply)
 
-def button_pressed(update, context):
+def raid(update, context):
+    # Lista dei bottoni
+    # Join | Left
+    # +1 Host | +1 Persona
+    # Annulla Raid
+    args = context.args
+    if len(args) >= 2:
+        buttons_list = [
+            [InlineKeyboardButton("🚶🏻‍♂ Io ci sono!", callback_data='join'),InlineKeyboardButton("📡 Invitami", callback_data='remote')],
+            [InlineKeyboardButton("🔔 Ping", callback_data='ping'),InlineKeyboardButton("💔 Passo", callback_data='skip')],
+        ]
+        reply = InlineKeyboardMarkup(buttons_list)
+        context.bot.send_message(chat_id = update.effective_chat.id, text="Pokèmon: {}\nOrario: {}\nNote: {}".format(args[0], args[1], ' '.join(args[2:])), reply_markup=reply)
+    else:
+        context.bot.send_message(chat_id = update.effective_chat.id, text="/raid <Pokèmon> <Orario> <?Note>")
+def button_handler(update, context):
     query = update.callback_query
     query.edit_message_text(text=query.data)
-
-# TODO: REMEMBER TO REMOVE THIS SHIT
-def build_menu(buttons,
-               n_cols,
-               header_buttons=None,
-               footer_buttons=None):
-    menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
-    if header_buttons:
-        menu.insert(0, [header_buttons])
-    if footer_buttons:
-        menu.append([footer_buttons])
-    return menu
