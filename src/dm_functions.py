@@ -1,4 +1,5 @@
 
+import re
 
 # when bot receives /start
 def start(update, context):
@@ -33,19 +34,85 @@ def help(update, context):
 def register(update, context):
     message_received(update)
     sending_message(update)
-    if not is_registered(update):
-        text = """Sembra che tu sia già registrato... 💩 se vuoi vedere le tue informazioni, digita /mostrami"""
+    if is_registered(update):
+        text = """Sembra che tu sia registrato... 💩 se vuoi vedere le tue informazioni salvate, digita /mostrami"""
     else:
-        text = """Sembra che tu non sia già registrato... 💩
-registrati usando i sottocomandi:
-/nickname
-/livello
-/codice"""
+        text = """Registrati usando i sottocomandi:
+/nick iltuonickname
+/livello iltuolivello
+/codice iltuocodiceamico"""
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
+# when bot receives /aggiorna
+def update(update, context):
+    message_received(update)
+    sending_message(update)
+    if not is_registered(update):
+        text = """Sembra che tu non sia registrato... 💩 se vuoi registrarti digita /registrami"""
+    else:
+        text = """Aggiorna il tuo profilo usando i sottocomandi:
+/nick iltuonickname
+/livello iltuolivello
+/codice iltuocodiceamico""" 
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+
+# when bot receives /nick
+def nick(update, context):
+    args = context.args
+    if len(args) == 1:
+        context.bot.send_message(chat_id = update.effective_chat.id, text="Il tuo nickname è stato aggiornato")
+        if is_registered(update):
+            # UPDATE
+            pass
+        else:
+            # INSERT
+            pass
+    else:
+        context.bot.send_message(chat_id = update.effective_chat.id, text="/nick iltuonickname")
+
+# when bot receives /livello
+def level(update, context):
+    args = context.args
+    if len(args) == 1:
+        try:
+            args[0] = int(args[0])
+            if args[0] < 9 or args[0] > 50:
+                context.bot.send_message(chat_id = update.effective_chat.id, text="Il livello inserito non è in un range valido 9-50.")
+            else:
+                context.bot.send_message(chat_id = update.effective_chat.id, text="Il tuo livello è stato aggiornato.")
+                if is_registered(update):
+                    # UPDATE
+                    pass
+                else:
+                    # INSERT
+                    pass
+        except ValueError:
+            context.bot.send_message(chat_id = update.effective_chat.id, text="Il livello inserito non è un numero valido")
+    else:
+        context.bot.send_message(chat_id = update.effective_chat.id, text="/level iltuolivello")
+
+# when bot receives /codice
+def code(update, context):    
+    args = context.args
+    if len(args) > 0:
+        if re.match('^[0-9]{12}$', ''.join(args)):
+            context.bot.send_message(chat_id = update.effective_chat.id, text="Il tuo codice amico è stato aggiornato.")
+            if is_registered(update):
+                # UPDATE
+                pass
+            else:
+                # INSERT
+                pass
+        else:
+            context.bot.send_message(chat_id = update.effective_chat.id, text="Hai inserito un codice non valido.")
+    else:
+        context.bot.send_message(chat_id = update.effective_chat.id, text="/codice iltuocodice")
+
+# check is user is into db
 def is_registered(update):
     return True
 
+# when bot receives /mostrami
 def show(update, context):
     if is_registered(update):
         text = """Cooming Sooooooooon 🤡🕰"""

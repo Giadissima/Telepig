@@ -22,8 +22,13 @@ def main():
     start_handler = CommandHandler('start', start) # /start
     '''   private commands   '''
     show_handler = CommandHandler('mostrami', show, filters=(Private)) # /show
+    nick_handler = CommandHandler('nick', nick, filters=(Private)) # /nick
+    level_handler = CommandHandler('livello', level, filters=(Private)) # /livello
+    code_handler = CommandHandler('codice', code, filters=(Private)) # /codice
+    
     help_handler = CommandHandler(['help','aiuto'], help, filters=(Private)) # /aiuto or /help
-    register_handler = CommandHandler('registrami', register, filters=(Private)) # /registrami
+    register_handler = CommandHandler('registrami', register, filters=(Private)) # /registrami,
+    update_handler = CommandHandler('aggiorna', update, filters=(Private)) # /aggiorna
     unknown_handler = MessageHandler(Filters.command & Private, unknown) # all commands not recognized in dm
     non_command_handler = MessageHandler(Filters.text & ~Filters.command & Private, non_command)  # all text without commands
     '''   public commands   '''
@@ -36,6 +41,9 @@ def main():
     '''   private commands   '''
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(show_handler)
+    dispatcher.add_handler(nick_handler)
+    dispatcher.add_handler(level_handler)
+    dispatcher.add_handler(code_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(register_handler)
     dispatcher.add_handler(non_command_handler)
