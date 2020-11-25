@@ -1,0 +1,85 @@
+{
+  "update_id":847452778,
+  "message":{
+    "message_id":1204,
+    "date":1606326216,
+    "chat":{
+      "id":-478372920,
+      "type":"group",
+      "title":"Testing Bot",
+      "all_members_are_administrators":"True"
+    },
+    "reply_to_message":{
+      "message_id":1197,
+      "date":1606325882,
+      "chat":{
+        "id":-478372920,
+        "type":"group",
+        "title":"Testing Bot",
+        "all_members_are_administrators":"True"
+      },
+      "text":"/segnala_raid",
+      "entities":[
+        {
+          "type":"bot_command",
+          "offset":0,
+          "length":13
+        }
+      ],
+      "caption_entities":[
+        
+      ],
+      "photo":[
+        
+      ],
+      "new_chat_members":[
+        
+      ],
+      "new_chat_photo":[
+        
+      ],
+      "delete_chat_photo":"False",
+      "group_chat_created":"False",
+      "supergroup_chat_created":"False",
+      "channel_chat_created":"False",
+      "from":{
+        "id":367369885,
+        "first_name":"zShockino",
+        "is_bot":"False",
+        "username":"zshockino",
+        "language_code":"it"
+      }
+    },
+    "text":"/segnala_raid",
+    "entities":[
+      {
+        "type":"bot_command",
+        "offset":0,
+        "length":13
+      }
+    ],
+    "caption_entities":[
+      
+    ],
+    "photo":[
+      
+    ],
+    "new_chat_members":[
+      
+    ],
+    "new_chat_photo":[
+      
+    ],
+    "delete_chat_photo":"False",
+    "group_chat_created":"False",
+    "supergroup_chat_created":"False",
+    "channel_chat_created":"False",
+    "from":{
+      "id":367369885,
+      "first_name":"zShockino",
+      "is_bot":"False",
+      "username":"zshockino",
+      "language_code":"it"
+    }
+  }
+}
