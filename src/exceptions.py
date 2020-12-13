@@ -35,6 +35,22 @@ class NoRaidFoundException(Exception):
   def __str__(self):
     return self.message
 
+class NoLanguageFoundException(Exception):
+  def __init__(self):
+    self.message = "Non sono riuscito a trovare il messaggio"
+    super().__init__(self.message)
+
+  def __str__(self):
+    return self.message
+
+class No (Exception):
+  def __init__(self):
+    self.message = "Non sono riuscito a trovare il messaggio"
+    super().__init__(self.message)
+
+  def __str__(self):
+    return self.message
+
 class Unknown(Exception):
   """
   Exception raised when we don't know what the fuck is going on.

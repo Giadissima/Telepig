@@ -1,23 +1,23 @@
 
 
-def getUserFriendCode(id):
+def get_user_friend_code(id):
     pass
 
-def getUserNick(id):
+def get_user_nick(id):
     pass
 
-def getUserCreatedRaid(id):
+def get_user_created_raid(id):
     pass
 
 # get all the information about user's pogo account
-def getUserInfo(id):
+def get_user_info(id):
     pass
 
-def gerRaidPartecipants():
+def get_raid_partecipants():
     pass
 
-def setUserFriendCode(id, code):
+def set_user_friend_code(id, code):
     pass
 
-def isUserIntoDb(id):
+def is_user_into_db(id):
     pass

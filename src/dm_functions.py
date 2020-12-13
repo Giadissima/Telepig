@@ -1,4 +1,6 @@
 import re
+from src.queries import *
+from src.utilities import *
 
 def start(update, context):
     """when bot receives /start"""
@@ -35,13 +37,14 @@ def register(update, context):
     """when bot receives /register"""
     message_received(update)
     sending_message(update)
-    if is_registered(update):
+    if (is_user_into_db(get_user_id(update))):
         text = """Sembra che tu sia registrato... 💩 se vuoi vedere le tue informazioni salvate, digita /mostrami"""
     else:
         text = """Registrati usando i sottocomandi:
 /nick iltuonickname
 /livello iltuolivello
-/codice iltuocodiceamico"""
+/codice iltuocodiceamico
+ricordati che devi effettuare tutti i passaggi per completare la registrazione."""
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 def update(update, context):
@@ -135,11 +138,6 @@ def welcome(update, context):
     text = """Benvenuto! Io sono Telepig, aiuto gli allenatori a organizzare i raid.
 Per favore, scrivimi per effettuare la registrazione."""
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
-
-# TODO: Rendi utile la funzione
-def is_registered(update):
-    '''   check if user is into db   '''
-    return True
 
 def message_received(update):
     '''   print on terminal the user info   '''

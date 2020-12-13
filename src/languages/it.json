@@ -1,0 +1,4 @@
+{
+  "TEST_MESSAGE": "Questo è un messaggio di test",
+  "TEST_ARGS_MESSAGE": "Gli argomenti sono %s %s %s"
+}
