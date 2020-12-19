@@ -2,8 +2,8 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from datetime import timedelta
 from src.queries import *
 from src.exceptions import *
-from src.language import *
-from src.utilities import *
+from src.languages import *
+from src.others.utilities import *
 import json
 
 # TODO: user friendcode e user nick

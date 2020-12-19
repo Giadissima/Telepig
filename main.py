@@ -1,10 +1,10 @@
 import telegram
 import logging
-from src.dm_functions import *
-from src.groups_functions import *
 from telegram.ext import Updater,  CommandHandler, CallbackQueryHandler
-from src.custom_filters import Private, Public
 from telegram.ext import MessageHandler, Filters
+from src.private_functions import *
+from src.public_functions import *
+from src.others.custom_filters import Private, Public
 from telegram.error import (TelegramError, Unauthorized, BadRequest, 
                             TimedOut, ChatMigrated, NetworkError)
                     

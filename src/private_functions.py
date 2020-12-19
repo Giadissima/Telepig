@@ -1,6 +1,6 @@
 import re
 from src.queries import *
-from src.utilities import *
+from src.others.utilities import *
 
 def start(update, context):
     """when bot receives /start"""
@@ -38,7 +38,8 @@ def register(update, context):
     message_received(update)
     sending_message(update)
     if (is_user_into_db(get_user_id(update))):
-        text = """Sembra che tu sia registrato... 💩 se vuoi vedere le tue informazioni salvate, digita /mostrami"""
+        text = """Sei già registrato! Se ti sei dimenticato qualche passaggio della registrazione,
+    digita /aggiorna e digita il comando del campo che vuoi aggiornare o registrare."""
     else:
         text = """Registrati usando i sottocomandi:
 /nick iltuonickname
@@ -51,13 +52,13 @@ def update(update, context):
     """when bot receives /aggiorna"""
     message_received(update)
     sending_message(update)
-    if not is_registered(update):
-        text = """Sembra che tu non sia registrato... 💩 se vuoi registrarti digita /registrami"""
-    else:
+    if (is_user_into_db(get_user_id(update))):
         text = """Aggiorna il tuo profilo usando i sottocomandi:
 /nick iltuonickname
 /livello iltuolivello
 /codice iltuocodiceamico""" 
+    else:
+        text = """Sembra che tu non sia registrato... per registrarti digita /registrami"""
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 # when bot receives /nick

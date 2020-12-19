@@ -20,4 +20,4 @@ def set_user_friend_code(id, code):
     pass
 
 def is_user_into_db(id):
-    pass
+    return True

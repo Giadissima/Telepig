@@ -15,7 +15,7 @@ friendcode: 000 000 000 000
 """
 
 def parse_text(message_code, args):
-    RAID_TEXT = "{} #raid \n⏰ {}\n\n📝 {}\n\n⚔️Host: {} {} livello {}\n"
+    RAID_TEXT = "{} #raid \n⏰ {}\n\n📝 {}\n\n⚔️Host: @{} [{}] livello {}\n"
     RAID_TEXT += "friendcode: {}\n\n📡 Partecipanti da remoto:"
     # messages
     if message_code == "RAID_TEXT":
@@ -26,7 +26,6 @@ def parse_text(message_code, args):
 # get_message("RAID_MESSAGE", lang="en")
 # TODO: TEST
 def get_message(message_code, args = (), lang = "it"):
-    LANGUAGES_PATH = "./languages"
 
     filename = abspath(join(LANGUAGES_PATH, lang+".json"))
     if not isfile(filename): abspath(join(LANGUAGES_PATH,"en.json"))
