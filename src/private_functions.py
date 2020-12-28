@@ -8,7 +8,8 @@ def start(update, context):
     sending_message(update)
     context.bot.send_message(chat_id=update.effective_chat.id, text="""Ciao sono Telepig! 
     \nPosso aiutarti a creare dei raid. 
-    \nPer favore ricorda che per utilizzarmi è necessario registrarsi. Digita /register per effettuare la registrazione.""")
+    \nPer favore ricorda che per utilizzarmi è necessario registrarsi. 
+    Digita /registrami per effettuare la registrazione.""")
 
 def unknown(update, context):
     """when bot receives unknown commands"""

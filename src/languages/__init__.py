@@ -16,7 +16,9 @@ friendcode: 000 000 000 000
 
 def parse_text(message_code, args):
     RAID_TEXT = "{} #raid \n⏰ {}\n\n📝 {}\n\n⚔️Host: @{} [{}] livello {}\n"
-    RAID_TEXT += "friendcode: {}\n\n📡 Partecipanti da remoto:"
+    RAID_TEXT += "friendcode: {}\n\n📡 Partecipanti da remoto: 3\n@MrKartoffeln [chips03] livello 23\n"
+    RAID_TEXT += "@zshockino [SPok3r] livello 25\n"
+    RAID_TEXT += "@giuly81 [jely81] livello 30\n"
     # messages
     if message_code == "RAID_TEXT":
         # @par pokemon, raid time, notes, username, nickname, friendcode
