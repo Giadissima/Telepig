@@ -26,7 +26,7 @@ def parse_text(message_code, args):
 
 # Example:
 # get_message("RAID_MESSAGE", lang="en")
-# TODO: TEST
+# TODO: FIX
 def get_message(message_code, args = (), lang = "it"):
 
     filename = abspath(join(LANGUAGES_PATH, lang+".json"))
